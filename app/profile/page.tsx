@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ProfileCompletionCard from "@/app/components/ProfileCompletionCard";
+import DeleteProfileButton from "@/app/components/DeleteProfileButton";
 import { currentUser } from "@/lib/mockData";
 import { calculateProfileCompletion } from "@/lib/utils/profileCompletion";
 
@@ -9,7 +10,10 @@ export default function ProfilePage() {
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-10">
       <div className="max-w-4xl mx-auto space-y-6">
-        <h1 className="text-3xl font-bold text-slate-900">My Profile</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold text-slate-900">My Profile</h1>
+          <DeleteProfileButton />
+        </div>
 
         <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6 flex items-center gap-5">
           {currentUser.image && (

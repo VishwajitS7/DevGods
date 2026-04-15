@@ -11,7 +11,8 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { label: 'Find Match', href: '/' },
+    { label: 'Home', href: '/' },
+    { label: 'Find Match', href: '/find-match' },
     { label: 'Profiles', href: '/profiles' },
     { label: 'Register', href: '/register' },
     { label: 'Dashboard', href: '/dashboard' },

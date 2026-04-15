@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import ProfileCard from "../components/ProfileCard";
+import ProfileCard from "@/app/components/ProfileCard";
 
 interface Profile {
   id: string;

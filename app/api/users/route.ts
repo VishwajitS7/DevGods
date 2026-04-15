@@ -29,15 +29,11 @@ export async function GET(request: Request) {
 
   const profiles = sorted.map((user) => {
     const matchScore = calculateMatchScore(currentUser, user);
-    const relation = interests.find(
-      (item) => item.fromUserId === currentUser.id && item.toUserId === user.id
-    );
-    const canViewPhoto = relation?.status === "accepted";
 
     return {
       ...user,
       matchScore,
-      isPhotoBlurred: !canViewPhoto,
+      isPhotoBlurred: false,
     };
   });
 

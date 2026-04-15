@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { getProfileById, Profile } from '@/lib/data';
+import { users } from '@/lib/mockData';
+import type { MatchUser as Profile } from '@/lib/types/user';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -17,19 +17,14 @@ export default function ProfileDetailPage({ params }: Props) {
 
   useEffect(() => {
     params.then((resolvedParams) => {
-      const profileId = parseInt(resolvedParams.id);
-      setId(resolvedParams.id);
+      const profileId = resolvedParams.id;
+      setId(profileId);
 
-      if (isNaN(profileId)) {
-        notFound();
+      const foundProfile = users.find(u => u.id === profileId);
+      
+      if (foundProfile) {
+        setProfile(foundProfile);
       }
-
-      const foundProfile = getProfileById(profileId);
-      if (!foundProfile) {
-        notFound();
-      }
-
-      setProfile(foundProfile);
       setLoading(false);
     });
   }, [params]);
@@ -62,7 +57,15 @@ export default function ProfileDetailPage({ params }: Props) {
   }
 
   if (!profile) {
-    return notFound();
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col items-center justify-center p-4">
+        <h1 className="text-3xl font-bold text-slate-800 mb-4">Profile Not Found</h1>
+        <p className="text-slate-600 mb-8">The profile you are looking for does not exist or has been removed.</p>
+        <Link href="/profiles" className="px-6 py-3 bg-rose-600 text-white rounded-xl font-semibold hover:bg-rose-700 transition">
+          Back to Matches
+        </Link>
+      </div>
+    );
   }
 
   return (

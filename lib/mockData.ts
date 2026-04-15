@@ -89,7 +89,10 @@ export const users: MatchUser[] = [
 
 export const interests: InterestRecord[] = [
   { id: "i-1", fromUserId: "u-current", toUserId: "u-1", status: "accepted" },
-  { id: "i-2", fromUserId: "u-current", toUserId: "u-3", status: "pending" },
+  { id: "i-2", fromUserId: "u-current", toUserId: "u-2", status: "accepted" },
+  { id: "i-3", fromUserId: "u-current", toUserId: "u-3", status: "accepted" },
+  { id: "i-4", fromUserId: "u-current", toUserId: "u-4", status: "accepted" },
+  { id: "i-5", fromUserId: "u-current", toUserId: "u-5", status: "accepted" },
 ];
 
 export interface NotificationRecord {
