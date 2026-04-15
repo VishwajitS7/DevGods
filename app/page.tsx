@@ -124,15 +124,17 @@ export default function Home() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 sm:mb-16">
-            <Link href="/register">
-              <button className="w-full sm:w-auto px-10 py-3 sm:py-4 bg-gradient-to-r from-rose-500 to-rose-600 text-white font-semibold rounded-full hover:from-rose-600 hover:to-rose-700 transition-all duration-300 shadow-lg hover:shadow-rose-500/50 text-lg">
-                Register Free
-              </button>
+            <Link
+              href="/register"
+              className="w-full sm:w-auto px-10 py-3 sm:py-4 bg-gradient-to-r from-rose-500 to-rose-600 text-white font-semibold rounded-full hover:from-rose-600 hover:to-rose-700 transition-all duration-300 shadow-lg hover:shadow-rose-500/50 text-lg text-center"
+            >
+              Register Free
             </Link>
-            <Link href="/profiles">
-              <button className="w-full sm:w-auto px-10 py-3 sm:py-4 border-2 border-emerald-600 text-emerald-600 font-semibold rounded-full hover:bg-emerald-50 transition-all duration-300 text-lg">
-                Browse Profiles
-              </button>
+            <Link
+              href="/profiles"
+              className="w-full sm:w-auto px-10 py-3 sm:py-4 border-2 border-emerald-600 text-emerald-600 font-semibold rounded-full hover:bg-emerald-50 transition-all duration-300 text-lg text-center"
+            >
+              Browse Profiles
             </Link>
           </div>
 
