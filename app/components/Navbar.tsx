@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import NotificationBell from './NotificationBell';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,8 @@ export default function Navbar() {
     { label: 'Find Match', href: '/' },
     { label: 'Profiles', href: '/profiles' },
     { label: 'Register', href: '/register' },
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'My Profile', href: '/profile' },
   ];
 
   return (
@@ -45,10 +48,12 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop Login Button */}
-          <button className="hidden md:block px-6 py-2.5 bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105">
-            Login
-          </button>
+          <div className="hidden md:flex items-center gap-2">
+            <NotificationBell userId="u-current" />
+            <button className="px-6 py-2.5 bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105">
+              Login
+            </button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
