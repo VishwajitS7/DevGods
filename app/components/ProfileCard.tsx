@@ -3,13 +3,15 @@
 import Image from 'next/image';
 
 interface ProfileCardProps {
-  id: number;
+  id: string;
   name: string;
   age: number;
   city: string;
   profession: string;
-  gender: 'Male' | 'Female';
+  gender: 'Male' | 'Female' | 'Other';
   image: string;
+  matchScore?: number;
+  isPhotoBlurred?: boolean;
 }
 
 export default function ProfileCard({
@@ -19,6 +21,8 @@ export default function ProfileCard({
   profession,
   gender,
   image,
+  matchScore = 0,
+  isPhotoBlurred = false,
 }: ProfileCardProps) {
   return (
     <div className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden cursor-pointer">
@@ -28,7 +32,9 @@ export default function ProfileCard({
           src={image}
           alt={name}
           fill
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+          className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ${
+            isPhotoBlurred ? "blur-md" : ""
+          }`}
           priority={false}
         />
         {/* Gender Badge */}
@@ -41,6 +47,9 @@ export default function ProfileCard({
 
       {/* Content */}
       <div className="p-5">
+        <p className="text-sm font-semibold text-emerald-700 mb-2">
+          Match: {matchScore}%
+        </p>
         {/* Name and Age */}
         <div className="mb-3">
           <h3 className="text-xl font-bold text-slate-900 mb-1">{name}</h3>

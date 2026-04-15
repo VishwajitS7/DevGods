@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface FormData {
   fullName: string;
@@ -19,6 +19,7 @@ interface FormErrors {
 }
 
 export default function RegisterPage() {
+  const successTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [form, setForm] = useState<FormData>({
     fullName: "",
     age: "",
@@ -105,8 +106,16 @@ export default function RegisterPage() {
     setLoading(false);
 
     // Hide success message after 5 seconds
-    setTimeout(() => setSuccess(false), 5000);
+    successTimerRef.current = setTimeout(() => setSuccess(false), 5000);
   };
+
+  useEffect(() => {
+    return () => {
+      if (successTimerRef.current) {
+        clearTimeout(successTimerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f0f7ed] to-[#fcf9f4] flex flex-col items-center justify-center px-6 py-12">
@@ -131,7 +140,8 @@ export default function RegisterPage() {
         {success && (
           <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
             <p className="text-sm font-semibold text-green-800">
-              ✓ Registration Successful! We'll review your profile shortly. 💍
+              ✓ Registration Successful! We&apos;ll review your profile shortly.
+              {" "}💍
             </p>
           </div>
         )}
