@@ -11,7 +11,8 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { label: 'Find Match', href: '/' },
+    { label: 'Home', href: '/' },
+    { label: 'Find Match', href: '/find-match' },
     { label: 'Profiles', href: '/profiles' },
     { label: 'Register', href: '/register' },
     { label: 'Dashboard', href: '/dashboard' },
@@ -50,9 +51,12 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-2">
             <NotificationBell userId="u-current" />
-            <button className="px-6 py-2.5 bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105">
+            <Link
+              href="/login"
+              className="px-6 py-2.5 bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300"
+            >
               Login
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -83,9 +87,13 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <button className="w-full px-4 py-3 mt-2 bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300">
+              <Link
+                href="/login"
+                onClick={() => setIsOpen(false)}
+                className="w-full px-4 py-3 mt-2 bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300 text-center"
+              >
                 Login
-              </button>
+              </Link>
             </div>
           </div>
         )}
